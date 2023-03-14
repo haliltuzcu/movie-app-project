@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import avatar from "../assets/icons/avatar.png";
+import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
-  const currentUser = false;
+  const { currentUser, logOut } = useContext(AuthContext);
+  // const currentUser = { displayName: "felix franko" };
+  // const currentUser = false;
   return (
     <div>
       <nav
-        className="relative flex w-full flex-wrap items-center justify-between bg-neutral-900 py-3 text-neutral-200 shadow-lg lg:flex-wrap lg:justify-start"
+        className="flex w-full flex-wrap items-center justify-between bg-neutral-100 dark:bg-gray-900 py-3 dark:text-neutral-200 shadow-lg lg:flex-wrap lg:justify-start fixed top-0 z-20"
         data-te-navbar-ref=""
       >
         <div className="flex w-full flex-wrap items-center justify-between px-6">
-          <Link className="pr-2 text-xl font-semibold text-white" to="/">
+          <Link className="pr-2 text-2xl font-semibold" to="/">
             React Movie App
           </Link>
 
@@ -24,7 +27,6 @@ const Navbar = () => {
             <div className="relative" data-te-dropdown-ref="">
               <span
                 className="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
-                href="#"
                 id="dropdownMenuButton2"
                 role="button"
                 data-te-dropdown-toggle-ref=""
@@ -49,7 +51,7 @@ const Navbar = () => {
                     to="/register"
                     data-te-dropdown-item-ref=""
                   >
-                   Register
+                    Register
                   </Link>
                 </li>
                 <li>
@@ -64,10 +66,11 @@ const Navbar = () => {
                 <li>
                   <span
                     className="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
-                    href="/login"
+                    role="button"
                     data-te-dropdown-item-ref=""
+                    onClick={() => logOut()}
                   >
-                   Logout
+                    Logout
                   </span>
                 </li>
               </ul>
@@ -76,6 +79,7 @@ const Navbar = () => {
           {/* Right elements */}
         </div>
       </nav>
+      <div className="h-[52px]"></div>
     </div>
   );
 };
