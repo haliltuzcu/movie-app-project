@@ -15,7 +15,7 @@ import {
   toastErrorNotify,
   toastSuccessNotify,
   toastWarnNotify,
-} from "../helpers/Toast";
+} from "../helpers/ToastNotify";
 
 // export const {Provider} = createContext()
 export const AuthContext = createContext();
