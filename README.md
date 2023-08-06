@@ -1,4 +1,4 @@
-# Movie app
+# Movie App
 
 ![gif](./Animation.gif)
 
